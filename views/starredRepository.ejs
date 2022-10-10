@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Register App</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle"
+            data-toggle="collapse"
+            data-target=".navbar-collapse"
+          >
+            <span class="icon-bar"></span> <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a class="active" href="/profile">Home</a></li>
+            <li><a href="/starredrepository">Starred Repositories</a></li>
+            <li><a href="/myrepository">My Repositories</a></li>
+            <li style="float: right">
+              <a class="logout" href="/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+        <!--/.navbar-collapse -->
+      </div>
+    </div>
+    <table id="customers">
+      <tr>
+        <th>Repository Name</th>
+        <th>Owner</th>
+        <th>Description</th>
+        <th>Default Branch</th>
+        <th>Github URL</th>
+        <th>Languages</th>
+      </tr>
+      <% data1.forEach(function(data) { %>
+
+      <tr>
+        <td><%= data.name %></td>
+        <td><%= data.owner.login %></td>
+        <td><%= data.description %></td>
+        <td><%= data.default_branch %></td>
+        <
+        <td><a href="<%= data.html_url %>"><%= data.html_url %></a></td>
+        <td><%= data.language %></td>
+      </tr>
+      <% }); %>
+    </table>
+  </body>
+</html>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+
+<style>
+  body {
+    background-color: white;
+  }
+  #customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 80px;
+  }
+
+  #customers td,
+  #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  #customers tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  #customers tr:hover {
+    background-color: #ddd;
+  }
+
+  #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04aa6d;
+    color: white;
+  }
+  .starredRepository {
+    background-color: #17aa04;
+  }
+</style>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Register App</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button
+          type="button"
+          class="navbar-toggle"
+          data-toggle="collapse"
+          data-target=".navbar-collapse"
+        >
+          <span class="icon-bar"></span> <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"></a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a class="active" href="/user">Home</a></li>
+          <li><a href="/starredRepositoryGit">Starred Repositories</a></li>
+          <li><a href="/repositoryGit">My Repositories</a></li>
+          <li style="float: right">
+            <a class="logout" href="/logout">Logout</a>
+          </li>
+        </ul>
+      </div>
+      <!--/.navbar-collapse -->
+    </div>
+  </div>
+
+  <div class="col-md-4 col-md-offset-4 form-card home">
+    <h2 style="text-align: center">Welcome <%= user.username %></h2>
+
+    <div class="card">
+      <img
+        src="<%= user._json.avatar_url %>"
+        alt="user-profile-photo"
+        style="width: 100%"
+      />
+      <h1><%= user.username %></h1>
+      <p class="title">Type: <%= user._json.type %></p>
+      <p>Public Repositories: <%= user._json.public_repos %></p>
+      <p>Followers: <%= user._json.followers %></p>
+      <p>Following: <%= user._json.following %></p>
+
+      <p>
+        <button id="githubProfile"><%= user.username %> Github Page</button>
+      </p>
+    </div>
+  </div>
+</html>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+
+<style>
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+  }
+
+  .title {
+    color: grey;
+    font-size: 18px;
+  }
+
+  button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+
+  a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+  }
+
+  button:hover,
+  a:hover {
+    opacity: 0.7;
+  }
+  .home {
+    margin-top: 100px;
+  }
+</style>
+<script type="text/javascript">
+  document.getElementById("githubProfile").onclick = function () {
+    location.href = "<%= user.profileUrl %>";
+  };
+</script>

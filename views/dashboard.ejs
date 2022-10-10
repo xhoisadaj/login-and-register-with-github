@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Register App</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle"
+            data-toggle="collapse"
+            data-target=".navbar-collapse"
+          >
+            <span class="icon-bar"></span> <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a class="active" href="/profile">Home</a></li>
+            <li><a href="/starredrepository">Starred Repositories</a></li>
+            <li><a href="/myrepository">My Repositories</a></li>
+            <li style="float: right">
+              <a class="logout" href="/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+        <!--/.navbar-collapse -->
+      </div>
+    </div>
+
+    <div class="dashboard">
+      <h2 style="text-align: center">Welcome <%= user.login %></h2>
+
+      <div class="card">
+        <img
+          src="<%= user.avatar_url %>"
+          alt="user-profile-photo"
+          style="width: 100%"
+        />
+        <h1><%= user.login %></h1>
+        <p class="title">Type: <%= user.type %></p>
+        <p>Public Repositories: <%= user.public_repos %></p>
+        <p>Followers: <%= user.followers %></p>
+        <p>Following: <%= user.following %></p>
+
+        <p>
+          <button id="githubProfile"><%= user.login %> Github Page</button>
+        </p>
+      </div>
+      <div class="abc" id="LangTable">
+        <a href="/logout">Logout</a>
+      </div>
+    </div>
+  </body>
+</html>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+
+<style>
+  .dashboard {
+    margin-top: 100px;
+  }
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+  }
+
+  .title {
+    color: grey;
+    font-size: 18px;
+  }
+
+  button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+
+  li {
+    float: left;
+    border-right: 1px solid #bbb;
+  }
+
+  li:last-child {
+    border-right: none;
+  }
+
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  li a:hover:not(.active) {
+    background-color: #111;
+  }
+</style>
+<script type="text/javascript">
+  document.getElementById("githubProfile").onclick = function () {
+    location.href = "<%= user.html_url %>";
+  };
+</script>
